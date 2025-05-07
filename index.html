@@ -1,0 +1,89 @@
+// src/App.jsx
+import React from "react";
+import FormularioCadastro from "./components/FormularioCadastro";
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="bg-white shadow-2xl rounded-2xl p-6 w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-4 text-center">Cadastro de Usuário</h1>
+        <FormularioCadastro />
+      </div>
+    </div>
+  );
+}
+
+// src/components/FormularioCadastro.jsx
+import React, { useState } from "react";
+
+export default function FormularioCadastro() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    dataNascimento: "",
+    cep: "",
+    celular: "",
+    email: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Dados cadastrados:", formData);
+    alert("Cadastro realizado com sucesso!");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <input
+        type="text"
+        name="nome"
+        placeholder="Nome completo"
+        value={formData.nome}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="date"
+        name="dataNascimento"
+        value={formData.dataNascimento}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="text"
+        name="cep"
+        placeholder="CEP"
+        value={formData.cep}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="tel"
+        name="celular"
+        placeholder="Celular"
+        value={formData.celular}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
+      />
+      <button type="submit" className="bg-blue-600 text-white p-2 rounded w-full">
+        Cadastrar
+      </button>
+    </form>
+  );
+}
