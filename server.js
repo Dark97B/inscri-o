@@ -31,8 +31,8 @@ app.post('/enviar', upload.single('video'), async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'SEU_EMAIL@gmail.com', // Substitua
-      pass: 'SENHA_DO_APP',         // Substitua (senha de app, não a senha normal!)
+      user: 'jeffersonolivernuke05@gmail.com', // Substitua
+      pass: '9135',         // Substitua (senha de app, não a senha normal!)
     },
   });
 
