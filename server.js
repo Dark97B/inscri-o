@@ -32,7 +32,7 @@ app.post('/enviar', upload.single('video'), async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'jeffersonolivernuke05@gmail.com', // Substitua
-      pass: '9135',         // Substitua (senha de app, não a senha normal!)
+      pass: 'coqt qzus qarw fefx',         // Substitua (senha de app, não a senha normal!)
     },
   });
 
@@ -61,8 +61,8 @@ app.post('/enviar', upload.single('video'), async (req, res) => {
     await transporter.sendMail(mailOptions);
     res.send('✅ Inscrição enviada com sucesso!');
   } catch (error) {
-    console.error('Erro ao enviar e-mail:', error);
-    res.status(500).send('❌ Erro ao enviar inscrição.');
+    console.error("Erro completo ao enviar e-mail:", error);
+    res.status(500).send(`❌ Erro ao enviar inscrição: ${error.message}`);
   }
 });
 
@@ -70,3 +70,5 @@ app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
 //http:localhost:3000
+console.log("Corpo do formulário:", req.body);
+console.log("Arquivo recebido:", req.file);
